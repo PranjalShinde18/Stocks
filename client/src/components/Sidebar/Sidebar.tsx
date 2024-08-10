@@ -17,13 +17,15 @@ const Sidebar = () => {
   return (
     <aside className="h-screen">
       <nav
-        className={`h-full flex flex-col bg-white border-r shadow-sm transition-all ${expanded ? "w-60" : "w-16"
-          }`}
+        className={`h-full flex flex-col bg-white border-r shadow-sm transition-all ${
+          expanded ? "w-60" : "w-16"
+        }`}
       >
         <div className="flex justify-between items-center p-4 pb-4 border-b">
           <div
-            className={`text-2xl overflow-hidden transition-all ${expanded ? "w-60" : "w-0"
-              }`}
+            className={`text-2xl overflow-hidden transition-all ${
+              expanded ? "w-60" : "w-0"
+            }`}
           >
             Logo
           </div>
@@ -43,24 +45,31 @@ const Sidebar = () => {
           {links.map((link: ILink) => {
             const isActive = link.path === pathname;
             return (
-              <li
-                key={link.name}
-                className={`relative rounded-md group`}
-              >
+              <li key={link.name} className={`relative group`}>
                 <NavLink
                   to={link.path}
-                  className={`flex gap-4 items-center py-4 ${expanded ? "m-4" : "ml-2 my-4"
-                    }`}
+                  className={`flex gap-4 items-center py-4 ${
+                    expanded ? "m-4" : "ml-2 my-4"
+                  }`}
                 >
-                  <link.icon
-                    className={`text-xl ${isActive ? "text-black font-semibold" : "text-gray-500 hover:text-black"} ${!expanded && "ml-3"
-                      }`}
-                  />
-                  <p
-                    className={`text-md font-regular overflow-hidden transition-all ${isActive ? "text-black font-semibold" : "text-gray-500 hover:text-black hover:font-semibold"} ${!expanded && "w-0"}`}
+                  <div
+                    className={`text-xl flex items-center gap-2 ${
+                      isActive
+                        ? "text-black font-semibold transition-all gap-3"
+                        : "text-gray-500 group-hover:text-black group-hover:font-medium"
+                    }`}
                   >
-                    {expanded ? link.name : ""}
-                  </p>
+                    <link.icon
+                      className={`text-[1.6rem] ${!expanded && "ml-3"}`}
+                    />
+                    <p
+                      className={`text-md font-regular overflow-hidden transition-all  ${
+                        !expanded && "w-0"
+                      }`}
+                    >
+                      {expanded ? link.name : ""}
+                    </p>
+                  </div>
 
                   {!expanded && (
                     <div
@@ -87,8 +96,9 @@ const Sidebar = () => {
             className="w-10 h-10 rounded-md"
           />
           <div
-            className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-60 ml-2" : "w-0"
-              }`}
+            className={`flex justify-between items-center overflow-hidden transition-all ${
+              expanded ? "w-60 ml-2" : "w-0"
+            }`}
           >
             <div className="leading-4">
               <p className="text-md font-semibold">
