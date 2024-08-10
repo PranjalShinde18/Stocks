@@ -1,9 +1,9 @@
-import { GoHome } from "react-icons/go";
-import { GrLineChart } from "react-icons/gr";
-import { FaIndianRupeeSign } from "react-icons/fa6";
+import { GoHomeFill } from "react-icons/go";
+import { PiChartLineFill } from "react-icons/pi";
+import { RiStockFill } from "react-icons/ri";
 import { IconType } from "react-icons";
-import { LuFile } from "react-icons/lu";
-import { LuCandlestickChart } from "react-icons/lu";
+import { RiFileList2Fill } from "react-icons/ri";
+import { MdInsertChart } from "react-icons/md";
 
 interface Link {
   name: string;
@@ -15,26 +15,26 @@ export const links: Link[] = [
   {
     name: "Home",
     path: "/",
-    icon: GoHome,
+    icon: GoHomeFill,
   },
   {
     name: "Stocks",
     path: "/stocks",
-    icon: GrLineChart,
+    icon: MdInsertChart,
   },
   {
     name: "Top Investors",
     path: "/top-investors",
-    icon: FaIndianRupeeSign,
+    icon: PiChartLineFill,
   },
   {
     name: "Wishlist",
     path: "/wishlist",
-    icon: LuFile,
+    icon: RiFileList2Fill,
   },
   {
     name: "Paper Trading",
     path: "/paper-trading",
-    icon: LuCandlestickChart,
+    icon: RiStockFill,
   },
 ];
