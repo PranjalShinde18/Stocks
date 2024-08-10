@@ -18,13 +18,13 @@ const Sidebar = () => {
     <aside className="h-screen">
       <nav
         className={`h-full flex flex-col bg-white border-r shadow-sm transition-all ${
-          expanded ? "w-60" : "w-16"
+          expanded ? "w-52" : "w-16"
         }`}
       >
         <div className="flex justify-between items-center p-4 pb-4 border-b">
           <div
             className={`text-2xl overflow-hidden transition-all ${
-              expanded ? "w-60" : "w-0"
+              expanded ? "w-52" : "w-0"
             }`}
           >
             Logo
@@ -53,7 +53,7 @@ const Sidebar = () => {
                   }`}
                 >
                   <div
-                    className={`text-xl flex items-center gap-2 ${
+                    className={`text-sm flex items-center gap-2 ${
                       isActive
                         ? "text-black font-semibold transition-all gap-3"
                         : "text-gray-500 group-hover:text-black group-hover:font-medium"
@@ -97,7 +97,7 @@ const Sidebar = () => {
           />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all ${
-              expanded ? "w-60 ml-2" : "w-0"
+              expanded ? "w-52 ml-2" : "w-0"
             }`}
           >
             <div className="leading-4">
