@@ -21,7 +21,7 @@ const Sidebar = () => {
           expanded ? "w-60" : "w-16"
         }`}
       >
-        <div className="flex justify-between items-center p-4 pb-4">
+        <div className="flex justify-between items-center p-4 pb-4 border-b">
           <div
             className={`text-2xl overflow-hidden transition-all ${
               expanded ? "w-60" : "w-0"
@@ -41,7 +41,7 @@ const Sidebar = () => {
           </button>
         </div>
 
-        <ul className="flex-1 bg-slate-200">
+        <ul className="flex-1">
           {links.map((link: ILink) => {
             const isActive = link.path === pathname;
             return (
