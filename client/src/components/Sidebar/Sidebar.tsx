@@ -63,7 +63,7 @@ const Sidebar = () => {
                       className={`text-[1.6rem] ${!expanded && "ml-3"}`}
                     />
                     <p
-                      className={`text-md font-regular overflow-hidden transition-all  ${
+                      className={`text-md line-clamp-1 font-regular overflow-hidden transition-all  ${
                         !expanded && "w-0"
                       }`}
                     >
