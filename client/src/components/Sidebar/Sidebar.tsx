@@ -18,13 +18,13 @@ const Sidebar = () => {
     <aside className="h-screen">
       <nav
         className={`h-full flex flex-col bg-white border-r shadow-sm transition-all ${
-          expanded ? "w-52" : "w-16"
+          expanded ? "w-56" : "w-18"
         }`}
       >
         <div className="flex justify-between items-center p-4 pb-4 border-b">
           <div
             className={`text-2xl overflow-hidden transition-all ${
-              expanded ? "w-52" : "w-0"
+              expanded ? "w-56" : "w-0"
             }`}
           >
             Logo
@@ -49,7 +49,7 @@ const Sidebar = () => {
                 <NavLink
                   to={link.path}
                   className={`flex gap-4 items-center py-4 ${
-                    expanded ? "m-4" : "ml-2 my-4"
+                    expanded ? "m-4" : "ml-4 my-4"
                   }`}
                 >
                   <div
@@ -60,7 +60,7 @@ const Sidebar = () => {
                     }`}
                   >
                     <link.icon
-                      className={`text-[1.6rem] ${!expanded && "ml-3"}`}
+                      className={`text-[1.6rem]`}
                     />
                     <p
                       className={`text-md line-clamp-1 font-regular overflow-hidden transition-all  ${
@@ -97,7 +97,7 @@ const Sidebar = () => {
           />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all ${
-              expanded ? "w-52 ml-2" : "w-0"
+              expanded ? "w-56 ml-2" : "w-0"
             }`}
           >
             <div className="leading-4">
