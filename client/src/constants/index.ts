@@ -1,6 +1,6 @@
 import { GoHomeFill } from "react-icons/go";
 import { PiChartLineFill } from "react-icons/pi";
-import { RiStockFill } from "react-icons/ri";
+import { MdCandlestickChart } from "react-icons/md";
 import { IconType } from "react-icons";
 import { RiFileList2Fill } from "react-icons/ri";
 import { MdInsertChart } from "react-icons/md";
@@ -35,6 +35,6 @@ export const links: Link[] = [
   {
     name: "Paper Trading",
     path: "/paper-trading",
-    icon: RiStockFill,
+    icon: MdCandlestickChart,
   },
 ];
