@@ -2,8 +2,8 @@ import { GoHomeFill } from "react-icons/go";
 import { PiChartLineFill } from "react-icons/pi";
 import { RiStockFill } from "react-icons/ri";
 import { IconType } from "react-icons";
-import { RiFileList2Fill } from "react-icons/ri";
 import { MdInsertChart } from "react-icons/md";
+import { HiMiniBookmark } from "react-icons/hi2";
 
 interface Link {
   name: string;
@@ -30,7 +30,7 @@ export const links: Link[] = [
   {
     name: "Wishlist",
     path: "/wishlist",
-    icon: RiFileList2Fill,
+    icon: HiMiniBookmark,
   },
   {
     name: "Paper Trading",
