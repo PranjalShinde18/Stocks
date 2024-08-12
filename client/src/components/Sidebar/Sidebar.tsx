@@ -59,11 +59,9 @@ const Sidebar = () => {
                         : "text-gray-500 group-hover:text-black group-hover:font-medium"
                     }`}
                   >
-                    <link.icon
-                      className={`text-[1.6rem]`}
-                    />
+                    <link.icon className={`text-[1.6rem]`} />
                     <p
-                      className={`text-md truncate font-regular overflow-hidden transition-all  ${
+                      className={`truncate font-regular overflow-hidden transition-all  ${
                         !expanded && "w-0"
                       }`}
                     >
