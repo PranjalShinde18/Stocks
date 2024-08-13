@@ -30,11 +30,9 @@ const userSchema = new Schema({
     { timestamps: true });
 
 
-// Pre-save hook to hash the password before saving the user
 userSchema.pre('save', async function (next) {
     const user = this;
 
-    // Only hash the password if it has been modified (or is new)
     if (!user.isModified('password')) return next();
 
     try {
@@ -47,7 +45,6 @@ userSchema.pre('save', async function (next) {
     }
 });
 
-// Method to compare a given password with the database hash
 userSchema.methods.comparePassword = async function (candidatePassword) {
     try {
         const isMatch = await bcrypt.compare(candidatePassword, this.password);
