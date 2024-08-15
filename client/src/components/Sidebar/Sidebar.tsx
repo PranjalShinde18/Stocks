@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { NavLink, useLocation } from "react-router-dom";
 import { links } from "../../constants";
 import { IconType } from "react-icons";
+import { useExpandContext } from "@/context/ExpandContext";
 
 interface ILink {
   name: string;
@@ -12,28 +12,28 @@ interface ILink {
 }
 
 const Sidebar = () => {
-  const [expanded, setExpanded] = useState<boolean>(true);
+  const { expand, setExpand } = useExpandContext();
   const { pathname } = useLocation();
   return (
-    <aside className="h-screen">
+    <aside className="h-screen fixed">
       <nav
         className={`h-full flex flex-col bg-white border-r shadow-sm transition-all ${
-          expanded ? "w-56" : "w-16"
+          expand ? "w-56" : "w-16"
         }`}
       >
         <div className="flex justify-between items-center p-4 pb-4 border-b">
           <div
             className={`text-2xl overflow-hidden transition-all ${
-              expanded ? "w-56" : "w-0"
+              expand ? "w-56" : "w-0"
             }`}
           >
             Logo
           </div>
           <button
-            onClick={() => setExpanded(!expanded)}
+            onClick={() => setExpand(!expand)}
             className="p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100"
           >
-            {expanded ? (
+            {expand ? (
               <FaChevronLeft className="text-xl" />
             ) : (
               <FaChevronRight className="text-xl" />
@@ -49,7 +49,7 @@ const Sidebar = () => {
                 <NavLink
                   to={link.path}
                   className={`flex gap-4 items-center py-4 ${
-                    expanded ? "m-4" : "ml-4 my-4"
+                    expand ? "m-4" : "ml-4 my-4"
                   }`}
                 >
                   <div
@@ -66,19 +66,19 @@ const Sidebar = () => {
                     />
                     <p
                       className={`truncate font-regular overflow-hidden transition-all  ${
-                        !expanded && "w-0"
+                        !expand && "w-0"
                       }`}
                     >
-                      {expanded ? link.name : ""}
+                      {expand ? link.name : ""}
                     </p>
                   </div>
 
-                  {!expanded && (
+                  {!expand && (
                     <div
                       className={`
                         absolute left-full rounded-md px-2 py-1 ml-6
-                        bg-gray-300 text-black text-md
-                        invisible opacity-20 -translate-x-3 transition-all
+                        bg-black text-white text-md
+                        invisible opacity-100 -translate-x-3 transition-all
                         group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
                     `}
                     >
@@ -99,14 +99,14 @@ const Sidebar = () => {
           />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all ${
-              expanded ? "w-52 ml-2" : "w-0"
+              expand ? "w-52 ml-2" : "w-0"
             }`}
           >
             <div className="leading-4">
               <p className="text-md font-semibold">
-                {expanded ? "John Doe" : ""}
+                {expand ? "John Doe" : ""}
               </p>
-              <p className="text-xs text-gray-500">{expanded ? "Admin" : ""}</p>
+              <p className="text-xs text-gray-500">{expand ? "Admin" : ""}</p>
             </div>
             <BsThreeDotsVertical className="text-xl" />
           </div>
