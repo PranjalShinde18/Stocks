@@ -1,9 +1,34 @@
 import { useExpandContext } from "@/context/ExpandContext";
-import { IoSearchOutline } from "react-icons/io5";
+import { ChangeEvent } from "react";
+// import { IoSearchOutline } from "react-icons/io5";
 import { ScrollArea } from "../ui/scroll-area";
+import investors from "@/investors";
+import Investor from "./Investor";
+import { useState } from "react";
+
+interface investorType {
+  name: string;
+  description: string;
+}
 
 const TopInvestors = () => {
   const { expand } = useExpandContext();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredInvestors, setFilteredInvestors] =
+    useState<investorType[]>(investors);
+
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filtered = investors.filter(
+      (investor) =>
+        investor.name.toLowerCase().includes(query) ||
+        investor.description.toLowerCase().includes(query)
+    );
+
+    setFilteredInvestors(filtered);
+  };
 
   return (
     <div
@@ -14,245 +39,37 @@ const TopInvestors = () => {
           Top Investors
         </h1>
         {/* search bar */}
-        <div className="flex items-center gap-1 py-2">
+        <div className="flex items-center overflow-hidden gap-1 py-2">
           <input
             type="text"
             placeholder="Search top investor"
             className="p-2 px-5 rounded-xl border w-full focus:border-black focus:outline-none focus:border-2"
+            value={searchQuery}
+            onChange={handleSearch}
           />
-          <div className="rounded-xl flex items-center gap-1 bg-gray-300 p-[9px] px-4 transition-all hover:bg-black hover:text-white cursor-pointer">
+          {/* <button className="rounded-xl flex items-center overflow-hidden gap-1 bg-gray-300 p-[9px] px-4 transition-all hover:bg-black hover:text-white cursor-pointer">
             <p>Search</p>
-            <IoSearchOutline className="text-2xl" />
-          </div>
+            <IoSearchOutline className="text-2xl"/>
+          </button> */}
         </div>
       </div>
+
       {/* Top Investors Cards */}
       <ScrollArea className="w-full h-[734px]">
         <div className="flex gap-5 flex-wrap">
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
+          {filteredInvestors.length > 0 ? (
+            filteredInvestors.map((investor) => (
+              <Investor
+                key={investor.name}
+                name={investor.name}
+                description={investor.description}
+              />
+            ))
+          ) : (
+            <div className="flex w-full justify-center items-center">
+              No Investors Found
             </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
-          <div
-            className={`flex flex-col items-center ${
-              expand ? "w-[340.5px]" : "w-[380.6px]"
-            } h-96 p-4 border rounded-xl shadow-md shadow-gray-400 transition-all hover:shadow-lg hover:shadow-gray-400`}
-          >
-            <div className="bg-gray-200 rounded-full w-40 h-40 mb-2"></div>
-            <div className="font-semibold w-full mb-2">Elon Musk</div>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-              tempore modi velit dolorem placeat dolores, dicta ipsam iste
-              deleniti natus eos minus, nisi fugit cum similique aperiam
-              mollitia odio id?
-            </div>
-          </div>
+          )}
         </div>
       </ScrollArea>
     </div>
