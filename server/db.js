@@ -1,21 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-const mongoURL =  "mongodb://localhost:27017/stocks";
+const mongoURL = process.env.MONGOURL;
 
-mongoose.connect(mongoURL, {})
+mongoose.connect(mongoURL, {});
 
 const db = mongoose.connection;
 
-db.on('connected', function () {
-    console.log('Connected to MongoDB server \n');
+db.on("connected", function () {
+  console.log("Connected to MongoDB server \n");
 });
 
-db.on('disconnected', function () {
-    console.log('Disconnected from MongoDB\n');
+db.on("disconnected", function () {
+  console.log("Disconnected from MongoDB\n");
 });
 
-db.on('error', function (err) {
-    console.log('Error connecting to MongoDB:' + err);
+db.on("error", function (err) {
+  console.log("Error connecting to MongoDB:" + err);
 });
 
 export default db;
