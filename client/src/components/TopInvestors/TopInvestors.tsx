@@ -3,8 +3,9 @@ import { ChangeEvent, useEffect } from "react";
 // import { IoSearchOutline } from "react-icons/io5";
 import { ScrollArea } from "../ui/scroll-area";
 // import investors from "@/investors";
-import Investor from "./Investor";
 import { useState } from "react";
+import InvestorCard from "./InvestorCard";
+// import { Link } from "react-router-dom";
 
 interface investorType {
   name: string;
@@ -54,7 +55,7 @@ const TopInvestors = () => {
     <div
       className={`p-4 h-screen transition-all ${expand ? "pl-60" : "pl-20"}`}
     >
-      <div className="">
+      <div className="sticky top-5 bg-white z-10">
         <h1 className="text-3xl mb-5 font-semibold inline-block">
           Top Investors
         </h1>
@@ -75,16 +76,17 @@ const TopInvestors = () => {
       </div>
 
       {/* Top Investors Cards */}
-      <ScrollArea className="w-full h-[734px]">
-        <div className="flex gap-5 flex-wrap">
+      <ScrollArea className="w-full h-full">
+        <div className="flex gap-5 flex-wrap pt-2">
           {filteredInvestors.length > 0 ? (
             filteredInvestors.map((investor) => (
-              <Investor
-                key={investor.name}
+              // <Link key={investor.name} to={`/top-investors/${investor.name}`}>
+              <InvestorCard
                 name={investor.name}
                 image_url={investor.image_url}
                 description={investor.description}
               />
+              // </Link>
             ))
           ) : (
             <div className="flex w-full justify-center items-center">
