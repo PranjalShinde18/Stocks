@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 // import Sidebar from "./components/Sidebar/Sidebar";
 import RootLayout from "./_root/RootLayout";
 import TopInvestors from "./components/TopInvestors/TopInvestors";
+import Investor from "./components/Investor/Investor";
 
 const App = () => {
   return (
@@ -13,10 +14,7 @@ const App = () => {
           <Route path="/top-investors" element={<TopInvestors />} />
           <Route path="/wishlist" element={<div>Wishlist</div>} />
           <Route path="/paper-trading" element={<div>Paper Trading</div>} />
-          <Route
-            path={`/top-investors/:name`}
-            element={<div className="w-full flex justify-center">Investor</div>}
-          />
+          <Route path={`/top-investors/:name`} element={<Investor />} />
         </Route>
       </Routes>
     </main>
