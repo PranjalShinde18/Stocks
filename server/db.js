@@ -6,7 +6,7 @@ const mongoURL = process.env.MONGOURL;
 
 mongoose.connect(mongoURL, {});
 
-const db = mongoose.connection;
+export const db = mongoose.connection;
 
 db.on("connected", function () {
   console.log("Connected to MongoDB server \n");
