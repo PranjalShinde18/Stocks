@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 interface Props {
   name: string;
@@ -7,9 +8,10 @@ interface Props {
   description: string;
 }
 
-const Investor = ({ name, image_url, description }: Props) => {
+const InvestorCard = ({ name, image_url, description }: Props) => {
   return (
-    <div
+    <Link
+      to={`/top-investors/${name}`}
       className={`flex flex-col items-center overflow-hidden group
                       w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-1rem)] lg:w-[calc(25%-1rem)]
                       h-[280px] sm:h-64 md:h-72 lg:h-[340px] p-4 border rounded-xl shadow-md shadow-gray-400 
@@ -29,8 +31,8 @@ const Investor = ({ name, image_url, description }: Props) => {
       <div className="w-full flex justify-end items-center mt-4 pr-2 transition-all group-hover:pr-0">
         <FaArrowRight className="text-lg" />
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default Investor;
+export default InvestorCard;

@@ -13,6 +13,10 @@ const App = () => {
           <Route path="/top-investors" element={<TopInvestors />} />
           <Route path="/wishlist" element={<div>Wishlist</div>} />
           <Route path="/paper-trading" element={<div>Paper Trading</div>} />
+          <Route
+            path={`/top-investors/:name`}
+            element={<div className="w-full flex justify-center">Investor</div>}
+          />
         </Route>
       </Routes>
     </main>

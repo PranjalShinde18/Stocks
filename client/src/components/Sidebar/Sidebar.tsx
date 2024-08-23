@@ -15,7 +15,7 @@ const Sidebar = () => {
   const { expand, setExpand } = useExpandContext();
   const { pathname } = useLocation();
   return (
-    <aside className="h-screen fixed">
+    <aside className="h-screen fixed z-99">
       <nav
         className={`h-full flex flex-col bg-white border-r shadow-sm transition-all ${
           expand ? "w-56" : "w-16"
@@ -55,7 +55,7 @@ const Sidebar = () => {
                   <div
                     className={`text-sm flex items-center gap-2 ${
                       isActive
-                        ? "text-black font-semibold transition-all gap-3"
+                        ? "text-black font-semibold gap-3"
                         : "text-gray-500 group-hover:text-black group-hover:font-medium"
                     }`}
                   >
