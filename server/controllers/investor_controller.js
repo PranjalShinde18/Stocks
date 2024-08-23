@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 import Investor from "../models/investor_model.js";
+
 export const getAllInvestors = async (req, res) => {
   try {
     const investors = await Investor.find();
