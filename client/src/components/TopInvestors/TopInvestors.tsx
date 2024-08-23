@@ -20,6 +20,7 @@ const TopInvestors = () => {
   const [filteredInvestors, setFilteredInvestors] = useState<investorType[]>(
     []
   );
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.toLowerCase();
@@ -36,6 +37,7 @@ const TopInvestors = () => {
 
   useEffect(() => {
     const getInvestors = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/api/investors`
@@ -45,6 +47,8 @@ const TopInvestors = () => {
         setFilteredInvestors(data);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
     getInvestors();
@@ -76,25 +80,29 @@ const TopInvestors = () => {
       </div>
 
       {/* Top Investors Cards */}
-      <ScrollArea className="w-full h-full">
-        <div className="flex gap-5 flex-wrap pt-2">
-          {filteredInvestors.length > 0 ? (
-            filteredInvestors.map((investor) => (
-              // <Link key={investor.name} to={`/top-investors/${investor.name}`}>
-              <InvestorCard
-                name={investor.name}
-                image_url={investor.image_url}
-                description={investor.description}
-              />
-              // </Link>
-            ))
-          ) : (
-            <div className="flex w-full justify-center items-center">
-              No Investors Found
-            </div>
-          )}
-        </div>
-      </ScrollArea>
+      {!loading ? (
+        <ScrollArea className="w-full h-full">
+          <div className="flex gap-5 flex-wrap pt-2">
+            {filteredInvestors.length > 0 ? (
+              filteredInvestors.map((investor) => (
+                // <Link key={investor.name} to={`/top-investors/${investor.name}`}>
+                <InvestorCard
+                  name={investor.name}
+                  image_url={investor.image_url}
+                  description={investor.description}
+                />
+                // </Link>
+              ))
+            ) : (
+              <div className="flex w-full justify-center items-center">
+                No Investors Found
+              </div>
+            )}
+          </div>
+        </ScrollArea>
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
