@@ -5,6 +5,7 @@ import { ScrollArea } from "../ui/scroll-area";
 // import investors from "@/investors";
 import { useState } from "react";
 import InvestorCard from "./InvestorCard";
+import Loader from "../Loader/loader";
 // import { Link } from "react-router-dom";
 
 interface investorType {
@@ -101,7 +102,7 @@ const TopInvestors = () => {
           </div>
         </ScrollArea>
       ) : (
-        <div>Loading...</div>
+        <Loader />
       )}
     </div>
   );
