@@ -36,7 +36,9 @@ const TopInvestors = () => {
   useEffect(() => {
     const getInvestors = async () => {
       try {
-        const response = await fetch(`http://localhost:8001/api/investors`);
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/investors`
+        );
         const data = await response.json();
         setInvestors(data);
         setFilteredInvestors(data);
