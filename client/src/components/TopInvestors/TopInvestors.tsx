@@ -1,21 +1,24 @@
 import { useExpandContext } from "@/context/ExpandContext";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 // import { IoSearchOutline } from "react-icons/io5";
 import { ScrollArea } from "../ui/scroll-area";
-import investors from "@/investors";
+// import investors from "@/investors";
 import Investor from "./Investor";
 import { useState } from "react";
 
 interface investorType {
   name: string;
+  image_url: string;
   description: string;
 }
 
 const TopInvestors = () => {
   const { expand } = useExpandContext();
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredInvestors, setFilteredInvestors] =
-    useState<investorType[]>(investors);
+  const [investors, setInvestors] = useState<investorType[]>([]);
+  const [filteredInvestors, setFilteredInvestors] = useState<investorType[]>(
+    []
+  );
 
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value.toLowerCase();
@@ -29,6 +32,21 @@ const TopInvestors = () => {
 
     setFilteredInvestors(filtered);
   };
+
+  useEffect(() => {
+    const getInvestors = async () => {
+      try {
+        const response = await fetch(`http://localhost:8001/api/investors`);
+        const data = await response.json();
+        setInvestors(data);
+        setFilteredInvestors(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getInvestors();
+    console.log(investors);
+  }, []);
 
   return (
     <div
@@ -62,6 +80,7 @@ const TopInvestors = () => {
               <Investor
                 key={investor.name}
                 name={investor.name}
+                image_url={investor.image_url}
                 description={investor.description}
               />
             ))

@@ -3,10 +3,11 @@ import { FaArrowRight } from "react-icons/fa6";
 
 interface Props {
   name: string;
+  image_url: string;
   description: string;
 }
 
-const Investor = ({ name, description }: Props) => {
+const Investor = ({ name, image_url, description }: Props) => {
   return (
     <div
       className={`flex flex-col items-center overflow-hidden group
@@ -15,7 +16,7 @@ const Investor = ({ name, description }: Props) => {
                       transition-all hover:shadow-lg hover:shadow-gray-400`}
     >
       <Avatar className="w-28 h-28 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-40 lg:h-40">
-        <AvatarImage src="https://github.com/shadcn.png" />
+        <AvatarImage src={image_url} />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
 
