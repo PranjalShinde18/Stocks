@@ -76,7 +76,7 @@ const Sidebar = () => {
                   {!expand && (
                     <div
                       className={`
-                        absolute left-full rounded-md px-2 py-1 ml-6
+                        absolute left-full rounded-md px-2 py-1 z-50 ml-6
                         bg-black text-white text-md
                         invisible opacity-100 -translate-x-3 transition-all
                         group-hover:visible group-hover:opacity-100 group-hover:translate-x-0

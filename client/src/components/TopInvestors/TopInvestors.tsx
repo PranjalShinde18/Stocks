@@ -5,7 +5,7 @@ import { ScrollArea } from "../ui/scroll-area";
 // import investors from "@/investors";
 import { useState } from "react";
 import InvestorCard from "./InvestorCard";
-import Loader from "../Loader/loader";
+import Loader from "../Loader/Loader";
 // import { Link } from "react-router-dom";
 
 interface investorType {
@@ -86,13 +86,12 @@ const TopInvestors = () => {
           <div className="flex gap-5 flex-wrap pt-2">
             {filteredInvestors.length > 0 ? (
               filteredInvestors.map((investor) => (
-                // <Link key={investor.name} to={`/top-investors/${investor.name}`}>
                 <InvestorCard
+                  key={investor.name}
                   name={investor.name}
                   image_url={investor.image_url}
                   description={investor.description}
                 />
-                // </Link>
               ))
             ) : (
               <div className="flex w-full justify-center items-center">
