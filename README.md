@@ -43,28 +43,28 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
 
    - For the Node.js backend:
      ```bash
-     cd backend
+     cd server
      npm install
      ```
 
    - For the React frontend:
      ```bash
-     cd frontend
+     cd client
      npm install
      ```
 
 
 3. **Set up environment variables:**
 
-   Create a `.env` file in the `backend`, `frontend`, and `flask-service` directories. Set up the required environment variables:
+   Create a `.env` file in the `server` and `client` directories. Set up the required environment variables:
 
-   - **Backend (`backend/.env`):**
+   - **Backend (`server/.env`):**
      ```plaintext
      MONGO_URI=mongodb://localhost:27017/yourdbname
      JWT_SECRET=your_jwt_secret_key
      ```
 
-   - **Frontend (`frontend/.env`):**
+   - **Frontend (`client/.env`):**
      ```plaintext
      REACT_APP_API_URL=http://localhost:5000
      ```
@@ -73,13 +73,13 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
 
    - **Start the backend server:**
      ```bash
-     cd backend
+     cd server
      npm start
      ```
 
    - **Start the frontend server:**
      ```bash
-     cd frontend
+     cd client
      npm start
      ```
 
