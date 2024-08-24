@@ -15,7 +15,7 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
 ## Tech Stack
 
 - **Frontend**: React, TypeScript, JavaScript
-- **Backend**: Node.js, Express, Flask
+- **Backend**: Node.js, Express, JavaScript
 - **Database**: MongoDB
 - **Web Scraping**: Puppeteer
 - **Financial Data API**: yfinance
@@ -35,7 +35,7 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/stock-portfolio-tracker.git
+   git clone https://github.com/PranjalShinde18/Stocks
    cd stock-portfolio-tracker
    ```
 
@@ -53,11 +53,6 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
      npm install
      ```
 
-   - For the Python services (Flask and yfinance):
-     ```bash
-     cd flask-service
-     pip install -r requirements.txt
-     ```
 
 3. **Set up environment variables:**
 
@@ -74,12 +69,6 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
      REACT_APP_API_URL=http://localhost:5000
      ```
 
-   - **Flask Service (`flask-service/.env`):**
-     ```plaintext
-     FLASK_APP=app.py
-     FLASK_ENV=development
-     ```
-
 4. **Run the services:**
 
    - **Start the backend server:**
@@ -92,12 +81,6 @@ The Stock Portfolio Tracker is a comprehensive web application that allows users
      ```bash
      cd frontend
      npm start
-     ```
-
-   - **Start the Flask service:**
-     ```bash
-     cd flask-service
-     flask run
      ```
 
 5. **Access the application:**
