@@ -1,4 +1,4 @@
-# Stock Portfolio Tracker
+# Stalky - Stock Portfolio Tracker
 
 ## Overview
 
